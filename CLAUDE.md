@@ -4,26 +4,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a lead capture landing page for an AI-powered sales automation service. It's a single-file HTML application that collects lead information and submits it to an n8n webhook for processing.
+Lead capture landing page for an AI-powered sales automation service. Built with React, TypeScript, Vite, and shadcn/ui.
+
+## Commands
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run lint     # Run ESLint
+```
 
 ## Architecture
 
-- **Single file**: `index.html` contains all HTML, CSS, and JavaScript
-- **No build process**: Static HTML file that can be served directly
-- **Backend integration**: Submits form data via POST to an n8n webhook URL
+- **Framework**: Vite + React + TypeScript
+- **UI Components**: shadcn/ui (Tailwind CSS v4)
+- **Backend integration**: Form submits to n8n webhook
+
+### Key Files
+
+- `src/App.tsx` - Main app with navigation and layout
+- `src/components/LeadForm.tsx` - Form with validation and webhook submission
+- `src/components/HeroSection.tsx` - Marketing content (features, stats)
+- `src/components/ui/` - shadcn/ui components
 
 ## Configuration
 
-The webhook URL is configured in the JavaScript section:
-```javascript
-const N8N_WEBHOOK_URL = 'https://YOUR-CLOUDFLARE-TUNNEL-URL/webhook/submit-lead';
+Webhook URL is in `src/components/LeadForm.tsx`:
+```typescript
+const N8N_WEBHOOK_URL = "https://n8n.filheinzrelatorre.com/webhook-test/ad07da4a-667d-4226-8301-25b49b327980";
 ```
-
-Update this URL to point to your n8n webhook endpoint.
 
 ## Form Data Payload
 
-The form submits the following JSON structure to the webhook:
 ```json
 {
   "name": "string",
@@ -39,6 +52,8 @@ The form submits the following JSON structure to the webhook:
 }
 ```
 
-## Development
+## Adding shadcn/ui Components
 
-To test locally, serve the HTML file with any static file server or open directly in a browser. Note that form submission requires CORS to be enabled on the n8n webhook endpoint.
+```bash
+npx shadcn@latest add [component-name]
+```
