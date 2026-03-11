@@ -16,7 +16,7 @@ export function HeroSection() {
   return (
     <div className="text-white">
       <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-        Transform Your Sales Process with AI
+        <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">Ignite</span> Your Sales Process
       </h1>
       <p className="text-lg md:text-xl text-white/90 mb-8">
         Stop wasting hours on manual research. Let AI enrich your leads, generate
@@ -26,7 +26,7 @@ export function HeroSection() {
       <ul className="space-y-3 mb-8">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center text-base md:text-lg">
-            <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center mr-3 text-sm font-bold shrink-0">
+            <span className="w-6 h-6 rounded-full bg-gradient-to-r from-red-500 to-orange-500 flex items-center justify-center mr-3 text-sm font-bold shrink-0 text-white">
               ✓
             </span>
             {feature}
@@ -37,10 +37,10 @@ export function HeroSection() {
       <div className="grid grid-cols-3 gap-4 md:gap-8 mt-10">
         {stats.map((stat, index) => (
           <div key={index} className="text-center">
-            <span className="text-3xl md:text-4xl font-bold block">
+            <span className="text-3xl md:text-4xl font-bold block bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent">
               {stat.number}
             </span>
-            <span className="text-sm opacity-90">{stat.label}</span>
+            <span className="text-sm text-white/80">{stat.label}</span>
           </div>
         ))}
       </div>

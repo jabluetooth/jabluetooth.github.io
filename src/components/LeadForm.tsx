@@ -135,8 +135,8 @@ export function LeadForm() {
   };
 
   return (
-    <Card className="shadow-2xl border-0 overflow-hidden">
-      <div className="h-1 bg-gradient-to-r from-indigo-500 to-purple-500" />
+    <Card className="shadow-2xl border-0 overflow-hidden bg-white/95 backdrop-blur-sm">
+      <div className="h-1 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500" />
       <CardHeader className="text-center pb-2">
         <CardTitle className="text-2xl">Get Started Today</CardTitle>
         <CardDescription>
@@ -237,7 +237,7 @@ export function LeadForm() {
 
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
+            className="w-full bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 hover:from-red-700 hover:via-orange-600 hover:to-yellow-600 text-white font-semibold shadow-lg"
             disabled={isLoading}
           >
             {isLoading ? (

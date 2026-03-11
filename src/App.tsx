@@ -1,14 +1,18 @@
 import { HeroSection } from "./components/HeroSection";
 import { LeadForm } from "./components/LeadForm";
+import igniteLogo from "./components/image/Ignite.png";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-purple-600">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-red-950">
       {/* Navigation */}
-      <nav className="bg-white/95 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+      <nav className="bg-black/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-red-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
-            AI Sales Automation
+          <div className="flex items-center gap-3">
+            <img src={igniteLogo} alt="Ignite Logo" className="h-10 w-auto" />
+            <span className="text-2xl font-bold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
+              Ignite
+            </span>
           </div>
         </div>
       </nav>
