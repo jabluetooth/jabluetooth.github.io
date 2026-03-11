@@ -14,7 +14,7 @@ export function HeroSection() {
   ];
 
   return (
-    <div className="text-white">
+    <div className="text-white pt-4">
       <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
         <span className="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent">Ignite</span> Your Sales Process
       </h1>
