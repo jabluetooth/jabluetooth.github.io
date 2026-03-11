@@ -8,13 +8,13 @@ function App() {
       {/* Navigation */}
       <nav className="bg-black/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-red-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <img
               src={igniteLogo}
               alt="Ignite Logo"
               className="h-8 w-auto"
             />
-            <span className="text-2xl font-bold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent leading-none">
+            <span className="text-xl font-extrabold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent tracking-tight">
               Ignite
             </span>
           </div>
