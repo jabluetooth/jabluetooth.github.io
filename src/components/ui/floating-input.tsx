@@ -181,4 +181,95 @@ const FloatingSelect = React.forwardRef<HTMLSelectElement, FloatingSelectProps>(
 
 FloatingSelect.displayName = "FloatingSelect";
 
-export { FloatingInput, FloatingTextarea, FloatingSelect };
+const countryCodes = [
+  { code: "+1", country: "US", flag: "🇺🇸" },
+  { code: "+1", country: "CA", flag: "🇨🇦" },
+  { code: "+44", country: "UK", flag: "🇬🇧" },
+  { code: "+61", country: "AU", flag: "🇦🇺" },
+  { code: "+49", country: "DE", flag: "🇩🇪" },
+  { code: "+33", country: "FR", flag: "🇫🇷" },
+  { code: "+34", country: "ES", flag: "🇪🇸" },
+  { code: "+39", country: "IT", flag: "🇮🇹" },
+  { code: "+81", country: "JP", flag: "🇯🇵" },
+  { code: "+86", country: "CN", flag: "🇨🇳" },
+  { code: "+91", country: "IN", flag: "🇮🇳" },
+  { code: "+55", country: "BR", flag: "🇧🇷" },
+  { code: "+52", country: "MX", flag: "🇲🇽" },
+  { code: "+63", country: "PH", flag: "🇵🇭" },
+  { code: "+65", country: "SG", flag: "🇸🇬" },
+  { code: "+971", country: "AE", flag: "🇦🇪" },
+  { code: "+966", country: "SA", flag: "🇸🇦" },
+  { code: "+31", country: "NL", flag: "🇳🇱" },
+  { code: "+46", country: "SE", flag: "🇸🇪" },
+  { code: "+41", country: "CH", flag: "🇨🇭" },
+];
+
+interface FloatingPhoneInputProps {
+  label: string;
+  error?: string;
+  required?: boolean;
+  value: string;
+  countryCode: string;
+  onValueChange: (value: string) => void;
+  onCountryCodeChange: (code: string) => void;
+  className?: string;
+}
+
+const FloatingPhoneInput = React.forwardRef<HTMLInputElement, FloatingPhoneInputProps>(
+  ({ className, label, error, required, value, countryCode, onValueChange, onCountryCodeChange }, ref) => {
+    const [isFocused, setIsFocused] = React.useState(false);
+
+    return (
+      <div className="relative">
+        <label
+          className={cn(
+            "block mb-1.5 ml-3 text-sm font-medium text-gray-600",
+            isFocused && "text-red-500",
+            error && "text-red-500"
+          )}
+        >
+          {label}
+          {required && <span className="text-red-500 ml-0.5">*</span>}
+        </label>
+        <div className={cn(
+          "flex w-full h-12 bg-gray-200 rounded-xl border-2 border-transparent transition-all duration-200",
+          "hover:bg-gray-300/80",
+          isFocused && "border-red-500 bg-gray-50",
+          error && "border-red-500 bg-red-50"
+        )}>
+          <select
+            value={countryCode}
+            onChange={(e) => onCountryCodeChange(e.target.value)}
+            className="h-full pl-3 pr-1 bg-transparent outline-none cursor-pointer text-base appearance-none border-r border-gray-300"
+          >
+            {countryCodes.map((c) => (
+              <option key={`${c.country}-${c.code}`} value={c.code}>
+                {c.flag} {c.code}
+              </option>
+            ))}
+          </select>
+          <input
+            ref={ref}
+            type="tel"
+            value={value}
+            onChange={(e) => onValueChange(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+            placeholder="123 456 7890"
+            className={cn(
+              "flex-1 h-full px-3 bg-transparent outline-none text-base placeholder:text-gray-400",
+              className
+            )}
+          />
+        </div>
+        {error && (
+          <p className="mt-1.5 text-sm text-red-500">{error}</p>
+        )}
+      </div>
+    );
+  }
+);
+
+FloatingPhoneInput.displayName = "FloatingPhoneInput";
+
+export { FloatingInput, FloatingTextarea, FloatingSelect, FloatingPhoneInput, countryCodes };

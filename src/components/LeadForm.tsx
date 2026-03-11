@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { FloatingInput, FloatingTextarea, FloatingSelect } from "@/components/ui/floating-input";
+import { FloatingInput, FloatingTextarea, FloatingSelect, FloatingPhoneInput } from "@/components/ui/floating-input";
 
 const N8N_WEBHOOK_URL = "https://n8n.filheinzrelatorre.com/webhook-test/ad07da4a-667d-4226-8301-25b49b327980";
 
@@ -19,6 +19,7 @@ interface FormData {
   email: string;
   company: string;
   phone: string;
+  phoneCountryCode: string;
   companySize: string;
   message: string;
 }
@@ -35,6 +36,7 @@ export function LeadForm() {
     email: "",
     company: "",
     phone: "",
+    phoneCountryCode: "+1",
     companySize: "",
     message: "",
   });
@@ -99,6 +101,7 @@ export function LeadForm() {
           email: "",
           company: "",
           phone: "",
+          phoneCountryCode: "+1",
           companySize: "",
           message: "",
         });
@@ -126,7 +129,6 @@ export function LeadForm() {
 
   return (
     <Card className="shadow-2xl border-0 overflow-hidden bg-white/95 backdrop-blur-sm">
-      <div className="h-1 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500" />
       <CardHeader className="text-center pb-2">
         <CardTitle className="text-2xl">Get Started Today</CardTitle>
         <CardDescription>
@@ -163,12 +165,12 @@ export function LeadForm() {
             error={errors.company}
           />
 
-          <FloatingInput
-            id="phone"
-            type="tel"
+          <FloatingPhoneInput
             label="Phone Number"
             value={formData.phone}
-            onChange={(e) => handleInputChange("phone", e.target.value)}
+            countryCode={formData.phoneCountryCode}
+            onValueChange={(value) => handleInputChange("phone", value)}
+            onCountryCodeChange={(code) => handleInputChange("phoneCountryCode", code)}
           />
 
           <FloatingSelect
@@ -187,7 +189,7 @@ export function LeadForm() {
 
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 hover:from-red-700 hover:via-orange-600 hover:to-yellow-600 text-white font-semibold shadow-lg"
+            className="w-full h-14 text-lg bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 hover:from-red-700 hover:via-orange-600 hover:to-yellow-600 text-white font-semibold shadow-lg rounded-xl"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -215,15 +217,10 @@ export function LeadForm() {
           )}
         </form>
 
-        <div className="mt-6 pt-6 border-t text-center">
-          <p className="text-sm text-muted-foreground mb-3">
-            Your information is secure and will never be shared
+        <div className="mt-6 pt-4 border-t text-center">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Ignite. All rights reserved.
           </p>
-          <div className="flex justify-center gap-4 flex-wrap text-sm text-muted-foreground">
-            <span>Instant Processing</span>
-            <span>AI-Powered</span>
-            <span>GDPR Compliant</span>
-          </div>
         </div>
       </CardContent>
     </Card>
