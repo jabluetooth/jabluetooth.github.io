@@ -1,17 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { FloatingInput, FloatingTextarea, FloatingSelect } from "@/components/ui/floating-input";
 
 const N8N_WEBHOOK_URL = "https://n8n.filheinzrelatorre.com/webhook-test/ad07da4a-667d-4226-8301-25b49b327980";
 
@@ -145,95 +135,55 @@ export function LeadForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name">
-              Full Name <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="name"
-              placeholder="John Doe"
-              value={formData.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
-              className={cn(errors.name && "border-destructive")}
-            />
-            {errors.name && (
-              <p className="text-sm text-destructive">{errors.name}</p>
-            )}
-          </div>
+          <FloatingInput
+            id="name"
+            label="Full Name"
+            required
+            value={formData.name}
+            onChange={(e) => handleInputChange("name", e.target.value)}
+            error={errors.name}
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="email">
-              Work Email <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="john@company.com"
-              value={formData.email}
-              onChange={(e) => handleInputChange("email", e.target.value)}
-              className={cn(errors.email && "border-destructive")}
-            />
-            {errors.email && (
-              <p className="text-sm text-destructive">{errors.email}</p>
-            )}
-          </div>
+          <FloatingInput
+            id="email"
+            type="email"
+            label="Work Email"
+            required
+            value={formData.email}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+            error={errors.email}
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="company">
-              Company Name <span className="text-destructive">*</span>
-            </Label>
-            <Input
-              id="company"
-              placeholder="Acme Corp"
-              value={formData.company}
-              onChange={(e) => handleInputChange("company", e.target.value)}
-              className={cn(errors.company && "border-destructive")}
-            />
-            {errors.company && (
-              <p className="text-sm text-destructive">{errors.company}</p>
-            )}
-          </div>
+          <FloatingInput
+            id="company"
+            label="Company Name"
+            required
+            value={formData.company}
+            onChange={(e) => handleInputChange("company", e.target.value)}
+            error={errors.company}
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
-            <Input
-              id="phone"
-              type="tel"
-              placeholder="+1 (555) 123-4567"
-              value={formData.phone}
-              onChange={(e) => handleInputChange("phone", e.target.value)}
-            />
-          </div>
+          <FloatingInput
+            id="phone"
+            type="tel"
+            label="Phone Number"
+            value={formData.phone}
+            onChange={(e) => handleInputChange("phone", e.target.value)}
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="companySize">Company Size</Label>
-            <Select
-              value={formData.companySize || undefined}
-              onValueChange={(value) => handleInputChange("companySize", value ?? "")}
-            >
-              <SelectTrigger id="companySize">
-                <SelectValue placeholder="Select size..." />
-              </SelectTrigger>
-              <SelectContent>
-                {companySizes.map((size) => (
-                  <SelectItem key={size.value} value={size.value}>
-                    {size.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
+          <FloatingSelect
+            label="Company Size"
+            value={formData.companySize}
+            onValueChange={(value) => handleInputChange("companySize", value)}
+            options={companySizes}
+          />
 
-          <div className="space-y-2">
-            <Label htmlFor="message">What challenges are you facing?</Label>
-            <Textarea
-              id="message"
-              placeholder="Tell us about your sales process and what you'd like to automate..."
-              value={formData.message}
-              onChange={(e) => handleInputChange("message", e.target.value)}
-              className="min-h-[100px]"
-            />
-          </div>
+          <FloatingTextarea
+            id="message"
+            label="What challenges are you facing?"
+            value={formData.message}
+            onChange={(e) => handleInputChange("message", e.target.value)}
+          />
 
           <Button
             type="submit"
