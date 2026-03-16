@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { FloatingInput, FloatingTextarea, FloatingSelect, FloatingPhoneInput } from "@/components/ui/floating-input";
 
-const N8N_WEBHOOK_URL = "https://n8n.filheinzrelatorre.com/webhook-test/ad07da4a-667d-4226-8301-25b49b327980";
+const N8N_WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL;
 
 const companySizes = [
   { value: "1-10", label: "1-10 employees" },
