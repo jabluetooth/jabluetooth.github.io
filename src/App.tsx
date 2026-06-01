@@ -1,34 +1,49 @@
-import { HeroSection } from "./components/HeroSection";
-import { LeadForm } from "./components/LeadForm";
-import igniteLogo from "./components/image/IgniteLogo.png";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import { EmberCanvas } from "./components/EmberCanvas";
+import { Nav } from "./components/Nav";
+import { Hero } from "./components/Hero";
+import { ProofBar } from "./components/ProofBar";
+import { HowItWorks } from "./components/HowItWorks";
+import { Features } from "./components/Features";
+import { FAQ } from "./components/FAQ";
+import { FormSection } from "./components/FormSection";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-red-950">
-      {/* Navigation */}
-      <nav className="bg-black/90 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-red-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center">
-            <img
-              src={igniteLogo}
-              alt="Ignite Logo"
-              className="h-8 w-auto"
-            />
-            <span className="text-xl font-extrabold bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent tracking-tight">
-              Ignite
-            </span>
-          </div>
-        </div>
-      </nav>
+    <ErrorBoundary>
+      {/* Ambient fire glows — position: fixed, pointer-events: none */}
+      <div
+        className="glow"
+        style={{
+          top: "-120px", right: "-80px",
+          width: "520px", height: "520px",
+          background: "radial-gradient(circle, rgba(255,90,31,0.5), transparent 70%)",
+        }}
+      />
+      <div
+        className="glow"
+        style={{
+          top: "1400px", left: "-160px",
+          width: "480px", height: "480px",
+          background: "radial-gradient(circle, rgba(255,59,30,0.32), transparent 70%)",
+        }}
+      />
 
-      {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          <HeroSection />
-          <LeadForm />
-        </div>
+      <EmberCanvas />
+      <Nav />
+
+      <main id="main-content">
+        <Hero />
+        <ProofBar />
+        <HowItWorks />
+        <Features />
+        <FAQ />
+        <FormSection />
       </main>
-    </div>
+
+      <Footer />
+    </ErrorBoundary>
   );
 }
 

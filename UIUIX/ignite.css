@@ -1,0 +1,167 @@
+/* ============================================================================
+   IGNITE — design tokens & base styles
+   Built on PesoPal foundations (dark-first ink canvas, Clash Display + General
+   Sans, 4pt grid, iOS-grouped radii) but with Ignite's FIRE accent in place of
+   emerald. No muddy full-page gradients — flat ink canvas + functional ember glow.
+   ============================================================================ */
+
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600,700&display=swap');
+
+:root {
+  /* ---- Surfaces & elevation (3-step luminance ladder) ------------------- */
+  --bg:               #0A0B0C;  /* primary ink canvas (faint cool tint) */
+  --surface:          #141618;  /* grouped cards */
+  --surface-2:        #1B1E21;  /* elevated rows / inner panels */
+  --surface-3:        #23272B;  /* modal / raised */
+  --separator:        rgba(255,255,255,0.08);
+  --hairline:         rgba(255,255,255,0.10);
+  --backdrop:         rgba(0,0,0,0.65);
+
+  /* ---- FIRE accent (sampled from the Ignite flame mark) ----------------- */
+  --fire-red:    #FF3B1E;
+  --fire-orange: #FF7A1A;
+  --fire-amber:  #FFC42E;
+  --accent:      #FF5A1F;   /* primary solid */
+  --accent-press:#E8480F;
+  --accent-soft: rgba(255,90,31,0.14);
+  --accent-line: rgba(255,90,31,0.35);
+  --fire-grad:   linear-gradient(120deg, #FF3B1E 0%, #FF7A1A 48%, #FFC42E 100%);
+  --fire-grad-soft: linear-gradient(120deg, rgba(255,59,30,0.16), rgba(255,196,46,0.10));
+  --on-accent:   #1A0A04;   /* deep ember-brown ink on bright fire */
+
+  /* ---- Semantic --------------------------------------------------------- */
+  --green:       #2FD180;
+  --green-soft:  rgba(47,209,128,0.14);
+  --red-alert:   #FF5A5F;
+  --red-soft:    rgba(255,90,95,0.12);
+
+  /* ---- Text ramp -------------------------------------------------------- */
+  --text:           #F4F5F3;
+  --text-secondary: #9AA0A0;
+  --text-muted:     #5E6568;
+
+  /* ---- Spacing (4pt grid) ----------------------------------------------- */
+  --space-xs: 4px;  --space-sm: 8px;  --space-md: 16px;
+  --space-lg: 24px; --space-xl: 32px; --space-2xl: 48px; --space-3xl: 80px;
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --radius-card:   20px;
+  --radius-lg:     24px;
+  --radius-button: 14px;
+  --radius-input:  12px;
+  --radius-pill:   999px;
+
+  /* ---- Type ------------------------------------------------------------- */
+  --font: "General Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-display: "Clash Display", "General Sans", system-ui, sans-serif;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-press: 120ms;
+
+  /* layout */
+  --max:  1180px;
+  --nav-h: 68px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent-soft); color: var(--fire-amber); }
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; }
+p { margin: 0; }
+
+/* ---- Reusable type ----------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--fire-orange);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.muted   { color: var(--text-secondary); }
+.tnum    { font-variant-numeric: tabular-nums; }
+.fire-text {
+  background: var(--fire-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* ---- Layout helpers ---------------------------------------------------- */
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: 24px; }
+.section { position: relative; padding-block: var(--space-3xl); }
+.section-head { max-width: 640px; margin-bottom: var(--space-2xl); }
+.section-head h2 { font-size: clamp(28px, 4vw, 44px); margin-top: 14px; }
+.section-head p { color: var(--text-secondary); font-size: 17px; margin-top: 16px; }
+
+/* ---- Buttons ----------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--font); font-weight: 600; font-size: 15px;
+  border: 1px solid transparent; border-radius: var(--radius-button);
+  padding: 13px 22px; min-height: 48px;
+  transition: transform var(--dur-press) var(--ease-out),
+              background var(--dur-press) var(--ease-out),
+              border-color var(--dur-press) var(--ease-out),
+              box-shadow var(--dur-press) var(--ease-out);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--fire-grad); color: #fff;
+  box-shadow: 0 8px 24px -8px rgba(255,90,31,0.6), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.btn-primary:hover { box-shadow: 0 12px 32px -8px rgba(255,90,31,0.75), inset 0 1px 0 rgba(255,255,255,0.3); transform: translateY(-1px); }
+.btn-ghost {
+  background: rgba(255,255,255,0.04); color: var(--text);
+  border-color: var(--hairline);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: var(--accent-line); }
+.btn-sm { min-height: 40px; padding: 9px 16px; font-size: 14px; }
+
+/* ---- Pills / chips ----------------------------------------------------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--text-secondary);
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill); padding: 7px 14px;
+}
+
+/* ---- Cards ------------------------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-card);
+  padding: 24px;
+}
+
+/* ---- Reveal-on-scroll (motion is driven by rAF in JS, not a CSS
+   transition — a throttled/occluded iframe can freeze CSS transitions) ---- */
+.reveal { opacity: 0; transform: translateY(26px); will-change: opacity, transform; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #23272B; border-radius: 999px; border: 2px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: #2e3338; }
