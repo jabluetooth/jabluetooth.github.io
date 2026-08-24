@@ -1,4 +1,4 @@
-# Ignite — AI-Powered Sales Automation Landing Page
+# Ignite - AI-Powered Sales Automation Landing Page
 
 > A production-ready lead-capture landing page for an AI sales automation product, built with React 19, TypeScript, and a hand-crafted CSS design system. Deployed via GitHub Actions to GitHub Pages.
 
@@ -8,7 +8,7 @@
 
 ## Overview
 
-Ignite is a B2B SaaS landing page that captures sales leads and pipes them into an n8n automation workflow. When a prospect submits the form, the webhook triggers lead enrichment, AI-written icebreaker generation, CRM sync, and Slack notifications — all without a backend or traditional server.
+Ignite is a B2B SaaS landing page that captures sales leads and pipes them into an n8n automation workflow. When a prospect submits the form, the webhook triggers lead enrichment, AI-written icebreaker generation, CRM sync, and Slack notifications - all without a backend or traditional server.
 
 The page was designed from scratch in a custom prototype (`UIUIX/`), then fully ported to a typed React application with accessibility, animation, and error handling built in.
 
@@ -30,15 +30,15 @@ The page was designed from scratch in a custom prototype (`UIUIX/`), then fully 
 
 ## Features
 
-- **Animated pipeline visualization** — 4-stage auto-cycling demo of the enrichment flow (new lead → enrich → AI icebreaker → CRM sync)
-- **Ember particle canvas** — performant `requestAnimationFrame` background that respects `prefers-reduced-motion`
-- **Scroll-reveal animations** — `IntersectionObserver`-triggered, cubic-eased entry for every section
-- **Animated counters** — count up on scroll-entry with eased `rAF` loop
-- **Validated lead form** — name / email / company required, inline error states, country-code phone, success/error/misconfigured states
-- **Sticky nav with blur** — scroll-aware backdrop-filter, collapses on mobile
-- **Accordion FAQ** — accessible `aria-controls` / `aria-expanded` / `role="region"`
-- **Error boundary** — top-level class component catches and renders a recovery UI
-- **Full WCAG accessibility** — skip link, `aria-live` regions, `aria-invalid`, `aria-describedby` per field, `focus-visible` keyboard ring, semantic landmarks
+- **Animated pipeline visualization** - 4-stage auto-cycling demo of the enrichment flow (new lead → enrich → AI icebreaker → CRM sync)
+- **Ember particle canvas** - performant `requestAnimationFrame` background that respects `prefers-reduced-motion`
+- **Scroll-reveal animations** - `IntersectionObserver`-triggered, cubic-eased entry for every section
+- **Animated counters** - count up on scroll-entry with eased `rAF` loop
+- **Validated lead form** - name / email / company required, inline error states, country-code phone, success/error/misconfigured states
+- **Sticky nav with blur** - scroll-aware backdrop-filter, collapses on mobile
+- **Accordion FAQ** - accessible `aria-controls` / `aria-expanded` / `role="region"`
+- **Error boundary** - top-level class component catches and renders a recovery UI
+- **Full WCAG accessibility** - skip link, `aria-live` regions, `aria-invalid`, `aria-describedby` per field, `focus-visible` keyboard ring, semantic landmarks
 
 ---
 
@@ -70,7 +70,7 @@ src/
 
 ## Design System
 
-All styles live in a single `src/index.css` using CSS custom properties — no Tailwind, no runtime CSS-in-JS.
+All styles live in a single `src/index.css` using CSS custom properties - no Tailwind, no runtime CSS-in-JS.
 
 ```css
 --bg:           #0A0B0C   /* ink canvas */
@@ -145,13 +145,13 @@ On submit, a `POST` request is sent to the n8n webhook with:
 
 ## Key Decisions
 
-**No Tailwind in production CSS** — the design needed precise custom tokens (fire gradient, surface elevation ladder, 4pt spacing grid). Utility classes would have added friction, not reduced it.
+**No Tailwind in production CSS** - the design needed precise custom tokens (fire gradient, surface elevation ladder, 4pt spacing grid). Utility classes would have added friction, not reduced it.
 
-**IntersectionObserver over scroll listeners** — the original prototype used polling + scroll events for reliability in sandboxed iframes. The production app runs in a real browser context, so IO is cleaner and more performant.
+**IntersectionObserver over scroll listeners** - the original prototype used polling + scroll events for reliability in sandboxed iframes. The production app runs in a real browser context, so IO is cleaner and more performant.
 
-**Inline SVG icons** — no icon font or external sprite. 28 icons are defined as path strings in `Ic.tsx`, keeping HTTP requests to a minimum and keeping `currentColor` theming trivial.
+**Inline SVG icons** - no icon font or external sprite. 28 icons are defined as path strings in `Ic.tsx`, keeping HTTP requests to a minimum and keeping `currentColor` theming trivial.
 
-**Class-based ErrorBoundary** — React does not yet support error boundaries as function components. The class component is intentionally minimal: log, show a recovery UI, offer a reload.
+**Class-based ErrorBoundary** - React does not yet support error boundaries as function components. The class component is intentionally minimal: log, show a recovery UI, offer a reload.
 
 ---
 
