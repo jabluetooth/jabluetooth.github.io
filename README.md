@@ -2,7 +2,20 @@
 
 > A production-ready lead-capture landing page for an AI sales automation product, built with React 19, TypeScript, and a hand-crafted CSS design system. Deployed via GitHub Actions to GitHub Pages.
 
-**Live site → [jabluetooth.github.io](https://jabluetooth.github.io)**
+[![Live](https://img.shields.io/badge/Live_Demo-000000?style=for-the-badge&logo=githubpages&logoColor=white)](https://jabluetooth.github.io)
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2671E5?style=for-the-badge&logo=githubactions&logoColor=white)
+
+<br>
+
+<!-- HERO: short GIF (10-15s) scrolling the live page - hero section with the ember
+     particle background, into the animated 4-stage pipeline visualization, ending on
+     the lead-capture form. The pipeline animation is the most distinctive visual
+     element, so make sure it's in frame. Save as docs/demo.gif, add here as: -->
+<!-- <p align="center"><img src="docs/demo.gif" alt="Ignite landing page demo" width="800"></p> -->
 
 ---
 
@@ -154,6 +167,17 @@ On submit, a `POST` request is sent to the n8n webhook with:
 **Class-based ErrorBoundary** - React does not yet support error boundaries as function components. The class component is intentionally minimal: log, show a recovery UI, offer a reload.
 
 ---
+
+## About the developer
+
+**Fil Heinz O. Re La Torre** - Automation & AI Solutions Engineer, building integrations and AI-backed workflows that go from idea to production in days.
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://www.filheinzrelatorre.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://ph.linkedin.com/in/filheinzrelatorre)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jabluetooth)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:filheinz27@gmail.com)
+
+**Other projects:** [Match](https://github.com/jabluetooth/match) · [ZeroPress](https://github.com/jabluetooth/zeropress) · [Mimo](https://github.com/jabluetooth/mimo) · [Insight](https://github.com/jabluetooth/insight) · [see all →](https://github.com/jabluetooth)
 
 ## License
 
